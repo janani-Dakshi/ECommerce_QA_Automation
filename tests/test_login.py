@@ -2,9 +2,10 @@ from selenium.webdriver.common.by import By
 
 from pages.login_page import LoginPage
 from test_data.login_data import USERNAME, PASSWORD
+from config.config import BASE_URL
 
 def test_login(driver):
-    driver.get("https://www.saucedemo.com/")
+    driver.get(BASE_URL)
 
     login_page=LoginPage(driver)
 

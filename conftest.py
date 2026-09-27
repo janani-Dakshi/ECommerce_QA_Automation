@@ -1,7 +1,9 @@
 import pytest
 from selenium import webdriver
+
 from pages.login_page import LoginPage
 from test_data.login_data import USERNAME, PASSWORD
+from config.config import BASE_URL
 
 @pytest.fixture
 def driver():
@@ -25,7 +27,7 @@ def driver():
 
 @pytest.fixture
 def logged_in_driver(driver):
-    driver.get("https://www.saucedemo.com/")
+    driver.get(BASE_URL)
 
     login_page=LoginPage(driver)
 
