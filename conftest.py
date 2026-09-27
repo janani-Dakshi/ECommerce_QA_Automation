@@ -1,4 +1,5 @@
 import pytest
+import os
 from selenium import webdriver
 
 from pages.login_page import LoginPage
@@ -36,3 +37,17 @@ def logged_in_driver(driver):
     login_page.click_login()
 
     return driver
+
+@pytest.fixture(autouse=True)
+def screenshot_on_failure(request,driver):
+    yield
+
+    if request.node.rep_call.failed:
+        os.makeddirs("screenshots",exist_ok=True)
+        driver.save_screenshot(f"screenshots/{request.node.name}.png")
+
+@pytest.hookimpl(hookwrapper=True)
+def pytest_runtest_makereport(item):
+    outcome=yield
+    rep=outcome.get_result()
+    setattr(item,"rep_"+rep.when,rep)
