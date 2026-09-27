@@ -1,6 +1,7 @@
 import pytest
 from selenium import webdriver
 from pages.login_page import LoginPage
+from test_data.login_data import USERNAME, PASSWORD
 
 @pytest.fixture
 def driver():
@@ -28,8 +29,8 @@ def logged_in_driver(driver):
 
     login_page=LoginPage(driver)
 
-    login_page.enter_username("standard_user")
-    login_page.enter_password("secret_sauce")
+    login_page.enter_username(USERNAME)
+    login_page.enter_password(PASSWORD)
     login_page.click_login()
 
     return driver
