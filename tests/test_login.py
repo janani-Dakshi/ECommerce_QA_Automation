@@ -14,3 +14,13 @@ def test_login(driver):
     login_page.click_login()
 
     assert login_page.get_page_title() == "Products"
+
+def test_invalid_login(driver):
+    driver.get(BASE_URL)
+
+    login_page=LoginPage(driver)
+    login_page.enter_username("invalid_user")
+    login_page.enter_password("wrong_password")
+    login_page.click_login()
+
+    assert "Epic sadface" in driver.page_source
