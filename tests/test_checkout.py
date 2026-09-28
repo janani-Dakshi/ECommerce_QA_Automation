@@ -23,6 +23,7 @@ def test_checkout_flow(logged_in_driver):
     checkout_page.click_continue()
     checkout_page.click_finish()
 
-    assert driver.find_element(By.CLASS_NAME,"complete-header").text=="Thank you for your order!"
+    confirmation = wait_for_element(driver,(By.CLASS_NAME,"complete-header"))
+    assert confirmation.text=="Thank you for your order!"
     
 
