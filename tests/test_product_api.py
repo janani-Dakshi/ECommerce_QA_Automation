@@ -10,3 +10,9 @@ def test_get_product():
 
     assert data["id"]==1
     assert "title" in data
+
+def test_get_invalid_product():
+
+    response = get_product(9999)
+
+    assert response.status_code == 404
