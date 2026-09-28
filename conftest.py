@@ -46,7 +46,7 @@ def screenshot_on_failure(request,driver):
     yield
 
     if request.node.rep_call.failed:
-        os.makeddirs("screenshots",exist_ok=True)
+        os.makedirs("screenshots",exist_ok=True)
         driver.save_screenshot(f"screenshots/{request.node.name}.png")
 
 @pytest.hookimpl(hookwrapper=True)
