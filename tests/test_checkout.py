@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from pages.product_page import ProductPage
 from pages.cart_page import CartPage
 from pages.checkout_page import CheckoutPage
+from utils.waits import wait_for_element
 
 def test_checkout_flow(logged_in_driver):
     driver=logged_in_driver

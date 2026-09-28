@@ -18,7 +18,7 @@ class CheckoutPage:
        WebDriverWait(self.driver,10).until(EC.element_to_be_clickable(self.checkout_button)).click()
 
     def enter_customer_info(self, first_name, last_name, postal_code):
-        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.first_name)).send_keys(first_name)
+        wait_for_element(self.driver,self.first_name).send_keys(first_name)
         self.driver.find_element(*self.last_name).send_keys(last_name)
         self.driver.find_element(*self.postal_code).send_keys(postal_code)
 
