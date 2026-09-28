@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from utils.waits import wait_for_element, EC
 
 class ProductPage:
     def __init__(self,driver):
@@ -6,4 +7,4 @@ class ProductPage:
         self.backpack=(By.ID,"add-to-cart-sauce-labs-backpack")
 
     def add_backpack_to_cart(self):
-        self.driver.find_element(*self.backpack).click()
+        wait_for_element(self.driver,self.backpack).click()
