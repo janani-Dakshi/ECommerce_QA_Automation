@@ -10,6 +10,7 @@ def test_get_product():
 
     assert data["id"]==1
     assert "title" in data
+    assert isinstance(data["price"],(int,float))
 
 def test_get_invalid_product():
 
