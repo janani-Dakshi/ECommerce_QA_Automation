@@ -4,6 +4,7 @@ from pages.product_page import ProductPage
 from pages.cart_page import CartPage
 from pages.checkout_page import CheckoutPage
 from utils.waits import wait_for_element
+from test_data.checkout_data import FIRST_NAME, LAST_NAME, POSTAL_CODE
 
 def test_checkout_flow(logged_in_driver):
     driver=logged_in_driver
@@ -19,7 +20,7 @@ def test_checkout_flow(logged_in_driver):
     checkout_page=CheckoutPage(driver)
     checkout_page.click_checkout()
 
-    checkout_page.enter_customer_info("abi","r","12345")
+    checkout_page.enter_customer_info(FIRST_NAME, LAST_NAME, POSTAL_CODE)
     checkout_page.click_continue()
     checkout_page.click_finish()
 
