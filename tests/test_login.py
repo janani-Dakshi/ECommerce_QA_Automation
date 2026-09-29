@@ -1,9 +1,11 @@
 from selenium.webdriver.common.by import By
+import pytest
 
 from pages.login_page import LoginPage
 from test_data.login_data import USERNAME, PASSWORD, INVALID_USERNAME, INVALID_PASSWORD
 from config.config import BASE_URL
 
+@pytest.mark.ui
 def test_login(driver):
     driver.get(BASE_URL)
 
@@ -15,6 +17,8 @@ def test_login(driver):
 
     assert login_page.get_page_title() == "Products"
 
+
+@pytest.mark.ui 
 def test_invalid_login(driver):
     driver.get(BASE_URL)
 
